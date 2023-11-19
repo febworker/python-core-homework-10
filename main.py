@@ -33,21 +33,21 @@ class Record:
 
     def find_phone(self, number):
         for phone in self.phones:
-            if phone.value == number:
+            if isinstance(phone, Phone) and phone.value == number:
                 return phone
         return None
 
     def edit_phone(self, old_number, new_number):
-        for i, phone in enumerate(self.phones):
-            if phone.value == old_number:
-                self.phones[i] = Phone(new_number)
+        for phone in self.phones:
+            if isinstance(phone, Phone) and phone.value == old_number:
+                phone.value = new_number
                 return
         raise ValueError(f"Phone number {old_number} not found.")
 
     def remove_phone(self, number):
-        for i, phone in enumerate(self.phones):
-            if phone.value == number:
-                del self.phones[i]
+        for phone in self.phones:
+            if isinstance(phone, Phone) and phone.value == number:
+                self.phones.remove(phone)
                 return
         raise ValueError(f"Phone number {number} not found.")
 
