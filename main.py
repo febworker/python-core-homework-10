@@ -29,7 +29,7 @@ class Record:
         self.phones = []
 
     def add_phone(self, phone):
-        self.phones.append(phone)
+        self.phones.append(Phone(phone))
 
     def find_phone(self, number):
         for phone in self.phones:
